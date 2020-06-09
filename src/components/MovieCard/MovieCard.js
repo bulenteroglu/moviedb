@@ -1,15 +1,14 @@
 import React from "react";
 import NotFound from "../../Utils/img/no-image-found.png";
 import Moment from "react-moment";
+import StarRatings from "react-star-ratings";
 
 export function MovieCard({ movie }) {
   if (!movie) return null;
 
-  console.log(movie);
-
   return (
     <div class='w-full p-5 md:w-1/2 lg:w-1/3'>
-      <article class='overflow-hidden rounded-lg shadow-2xl  '>
+      <article class='overflow-hidden rounded-lg shadow-2xl'>
         <a href='#'>
           <img
             alt='Placeholder'
@@ -35,12 +34,16 @@ export function MovieCard({ movie }) {
         </header>
 
         <footer class='flex items-center justify-between leading-none p-2 md:p-4'>
-          <a
-            class='flex items-center no-underline hover:underline text-black'
-            href='#'
-          >
-            <p class='ml-2 text-sm'>{movie.popularity}</p>
-          </a>
+          <div class='items-center m-auto '>
+            <StarRatings
+              rating={Math.floor(movie.vote_average / 2)}
+              starRatedColor='#ffafbd'
+              numberOfStars={5}
+              name='rating'
+              starDimension='20px'
+              starSpacing='5px'
+            />
+          </div>
         </footer>
       </article>
     </div>
