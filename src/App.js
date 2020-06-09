@@ -1,13 +1,15 @@
 import React from "react";
-import { Navbar, MovieCard, Homepage } from "./components";
+import { Navbar, Homepage } from "./components";
+import { BrowserRouter, Route } from "react-router-dom";
+import TopMovies from "./components/Movies/TopMovies";
 
 const App = () => {
   return (
-    <>
+    <BrowserRouter>
       <Navbar />
-      <Homepage />
-      {/* <MovieCard /> */}
-    </>
+      <Route path='/discover/Upcoming' component={Homepage} />
+      <Route path='/discover/top rated' component={TopMovies} />
+    </BrowserRouter>
   );
 };
 
