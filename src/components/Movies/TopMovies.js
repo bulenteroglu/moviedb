@@ -38,8 +38,8 @@ const TopMovies = () => {
   if (!movies.results) return null;
 
   return (
-    <div class='container my-12 mx-auto '>
-      <div class='flex flex-wrap'>
+    <div class='container mx-auto px-4 pt-16'>
+      <div class='grid grid-cols-5 gap-8'>
         {movies.results.map((movie, i) => {
           return <MovieCard key={i} movie={movie} />;
         })}
