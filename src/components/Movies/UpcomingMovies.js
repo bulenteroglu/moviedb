@@ -39,12 +39,18 @@ const UpcomingMovies = () => {
 
   return (
     <div class='container mx-auto px-4 pt-16'>
-      <div class='grid grid-cols-5 gap-8'>
-        {movies.results.map((movie, i) => {
-          return <MovieCard key={i} movie={movie} />;
-        })}
+      <div className='upcoming-movies'>
+        <h2 className='uppercase tracking-wider text-orange-500 text-lg font-semibold'>
+          Upcoming Movies
+        </h2>
+        <div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8'>
+          {movies.results.map((movie, i) => {
+            return <MovieCard key={i} movie={movie} />;
+          })}
+        </div>
       </div>
-      {currentPage !== totalPages && (
+
+      {/* {currentPage !== totalPages && (
         <button
           onClick={nextButton}
           class='float-right bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
@@ -59,7 +65,7 @@ const UpcomingMovies = () => {
         >
           Page {currentPage - 1}
         </button>
-      )}
+      )} */}
     </div>
   );
 };

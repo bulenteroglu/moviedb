@@ -23,3 +23,15 @@ export const getTopRated = async (currentPage) => {
     console.log(error);
   }
 };
+
+export const getMovie = async (id) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
