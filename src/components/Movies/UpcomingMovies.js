@@ -29,10 +29,12 @@ const UpcomingMovies = () => {
 
   const nextButton = () => {
     setCurrentPage(currentPage + 1);
+    window.scrollTo(0, 0);
   };
 
   const prevButton = () => {
     setCurrentPage(currentPage - 1);
+    window.scrollTo(0, 0);
   };
 
   if (!movies.results) return null;
@@ -49,23 +51,24 @@ const UpcomingMovies = () => {
           })}
         </div>
       </div>
-
-      {/* {currentPage !== totalPages && (
-        <button
-          onClick={nextButton}
-          class='float-right bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-        >
-          Page {currentPage + 1}
-        </button>
-      )}
-      {currentPage > 1 && (
-        <button
-          onClick={prevButton}
-          class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-        >
-          Page {currentPage - 1}
-        </button>
-      )} */}
+      <div className='container mx-auto px-4 flex flex-col md:flex-row items-center justify-between'>
+        {currentPage > 1 && (
+          <button
+            onClick={prevButton}
+            class='bg-gray-800 my-6 bg-orange-500 text-gray-900 rounded font-semibold p-2 hover:bg-orange-600 transition ease-in-out duration-150 focus:outline-none focus:shadow-outline'
+          >
+            Page {currentPage - 1}
+          </button>
+        )}
+        {currentPage !== totalPages && (
+          <button
+            onClick={nextButton}
+            class='bg-gray-800 my-6 bg-orange-500 text-gray-900 rounded font-semibold p-2 hover:bg-orange-600 transition ease-in-out duration-150 focus:outline-none focus:shadow-outline'
+          >
+            Page {currentPage + 1}
+          </button>
+        )}
+      </div>
     </div>
   );
 };

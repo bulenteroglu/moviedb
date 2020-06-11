@@ -37,7 +37,10 @@ export function MovieCard({ movie }) {
             </span>
             <span className='ml-1'>{movie.vote_average * 10}%</span>
             <span className='mx-2'>|</span>
-            <span>Feb 20, 2020</span>
+            <span>
+              {" "}
+              <Moment format='MMM D, YYYY'>{movie.release_date}</Moment>
+            </span>
           </div>
           <div className='text-gray-400 text-sm'>Action, Thriller, Comedy</div>
         </div>
