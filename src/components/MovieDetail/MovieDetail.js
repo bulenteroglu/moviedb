@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Moment from "react-moment";
 import NotFound from "../../Utils/img/no-image-found.png";
 
-import { getMovie, getTrailer } from "../../api/";
+import { getMovie, getTrailer, getCast } from "../../api/";
 import Modal from "./Modal";
 
 const MovieDetail = ({
@@ -12,22 +12,24 @@ const MovieDetail = ({
 }) => {
   const [data, setData] = useState([]);
   const [trailer, setTrailer] = useState([]);
+  const [credits, setCredits] = useState([]);
   const [modal, setModal] = useState(false);
 
   const onClick = () => {
     setModal(!modal);
   };
 
-  console.log(data);
-
   useEffect(() => {
     const fetchAPI = async () => {
       setData(await getMovie(id));
       setTrailer(await getTrailer(id));
+      setCredits(await getCast(id));
     };
 
     fetchAPI();
   }, []);
+
+  console.log(credits);
 
   return (
     <>
@@ -65,7 +67,7 @@ const MovieDetail = ({
               <span className='mx-2'>|</span>
               {data.genres &&
                 data.genres.map((genre, i) => {
-                  return <span>{(i ? ", " : "") + genre.name}</span>;
+                  return <span key={i}>{(i ? ", " : "") + genre.name}</span>;
                 })}
             </div>
             <p className='text-gray-300 mt-8'>{data.overview}</p>
@@ -73,22 +75,39 @@ const MovieDetail = ({
             <div className='mt-12'>
               <h4 className='text-white font-semibold'>Featured Cast</h4>
               <div className='flex mt-4'>
-                <div>
-                  <div>Bong Joon-ho</div>
-                  <div className='text-sm text-gray-400'>
-                    Screenplay, Director, Story
-                  </div>
-                </div>
-                <div className='ml-8'>
-                  <div>Han Jin-won</div>
-                  <div className='text-sm text-gray-400'>Screenplay</div>
-                </div>
+                {credits.cast &&
+                  credits.cast.slice(0, 2).map((credit, i) => {
+                    {
+                      return i > 0 ? (
+                        <div className={`${i < 1} ml-8 `}>
+                          {credit.character}
+                          <div className='text-sm text-gray-400'>
+                            {credit.name}
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          {credit.character}
+                          <div className='text-sm text-gray-400'>
+                            {credit.name}
+                          </div>
+                        </div>
+                      );
+                    }
+                  })}
               </div>
             </div>
+
             <div className='mt-12'>
               <button
+                disabled={!trailer.length}
                 onClick={onClick}
-                className='flex items-center bg-orange-500 text-gray-900 rounded font-semibold px-5 py-4 hover:bg-orange-600 transition ease-in-out duration-150 focus:outline-none focus:shadow-outline'
+                className={` ${
+                  !trailer.length
+                    ? "cursor-not-allowed bg-red-600"
+                    : "bg-orange-500 hover:bg-orange-600 transition ease-in-out duration-150"
+                }
+                flex items-center  text-gray-900 rounded font-semibold px-5 py-4  focus:outline-none focus:shadow-outline`}
               >
                 <svg
                   className='w-6 fill-current'
@@ -107,17 +126,25 @@ const MovieDetail = ({
       <div className='movie-cast border-b border-gray-800'>
         <div className='container mx-auto px-4 py-16'>
           <h2 className='text-4xl font-semibold'>Cast</h2>
-          <div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8'>
-            <div class='mt-8'>
-              <img
-                alt='Placeholder'
-                class='hover:opacity-75 transition ease-in-out duration-150'
-                src='https://image.tmdb.org/t/p/w600_and_h900_bestv2/lMqKPig7zBoGfou7wWf88sZEGHo.jpg'
-              />
-              <div className='mt-2'>
-                <div className='text-gray-400'>Ahmet Durmus</div>
-              </div>
-            </div>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8'>
+            {credits.cast &&
+              credits.cast.map((credit) => (
+                <div className='mt-8'>
+                  <img
+                    alt='Placeholder'
+                    className='hover:opacity-75 transition ease-in-out duration-150'
+                    src={
+                      !credit.profile_path
+                        ? NotFound
+                        : `https://image.tmdb.org/t/p/w600_and_h900_bestv2${credit.profile_path}`
+                    }
+                    alt={data.title}
+                  />
+                  <div className='mt-2'>
+                    <div className='text-gray-400'>{credit.name}</div>
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
       </div>

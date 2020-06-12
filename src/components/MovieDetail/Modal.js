@@ -1,8 +1,6 @@
 import React from "react";
 
 const Modal = ({ onClick, trailer }) => {
-  console.log(trailer);
-
   return (
     <div
       style={{ backgroundColor: "rgba(0,0,0,.5)" }}
@@ -28,7 +26,7 @@ const Modal = ({ onClick, trailer }) => {
                 style={{ border: "0" }}
                 width='560'
                 height='315'
-                src={`https://www.youtube.com/embed/${trailer[0].key}`}
+                src={`https://www.youtube.com/embed/${trailer[0].key}?autoplay=1&mute=1`}
                 allow='autoplay; encrypted-media'
                 allowfullScreen
               ></iframe>

@@ -49,3 +49,15 @@ export const getTrailer = async (id) => {
     console.log(error);
   }
 };
+
+export const getCast = async (id) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
