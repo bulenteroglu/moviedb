@@ -35,3 +35,17 @@ export const getMovie = async (id) => {
     console.log(error);
   }
 };
+
+export const getTrailer = async (id) => {
+  try {
+    const {
+      data: { results },
+    } = await axios.get(
+      `http://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`
+    );
+
+    return results;
+  } catch (error) {
+    console.log(error);
+  }
+};

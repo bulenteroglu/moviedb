@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Moment from "react-moment";
-import { getMovie } from "../../api/";
+import NotFound from "../../Utils/img/no-image-found.png";
+
+import { getMovie, getTrailer } from "../../api/";
+import Modal from "./Modal";
 
 const MovieDetail = ({
   match: {
@@ -8,16 +11,23 @@ const MovieDetail = ({
   },
 }) => {
   const [data, setData] = useState([]);
+  const [trailer, setTrailer] = useState([]);
+  const [modal, setModal] = useState(false);
+
+  const onClick = () => {
+    setModal(!modal);
+  };
+
+  console.log(data);
 
   useEffect(() => {
     const fetchAPI = async () => {
       setData(await getMovie(id));
+      setTrailer(await getTrailer(id));
     };
 
     fetchAPI();
   }, []);
-
-  console.log(data);
 
   return (
     <>
@@ -25,7 +35,11 @@ const MovieDetail = ({
         <div className='container mx-auto px-4 py-16 flex flex-col md:flex-row'>
           <img
             style={{ width: "24rem" }}
-            src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+            src={
+              !data.poster_path
+                ? NotFound
+                : `https://image.tmdb.org/t/p/w500${data.poster_path}`
+            }
             alt={data.title}
           />
           <div className='md:ml-24'>
@@ -72,7 +86,10 @@ const MovieDetail = ({
               </div>
             </div>
             <div className='mt-12'>
-              <button className='flex items-center bg-orange-500 text-gray-900 rounded font-semibold px-5 py-4 hover:bg-orange-600 transition ease-in-out duration-150 focus:outline-none focus:shadow-outline'>
+              <button
+                onClick={onClick}
+                className='flex items-center bg-orange-500 text-gray-900 rounded font-semibold px-5 py-4 hover:bg-orange-600 transition ease-in-out duration-150 focus:outline-none focus:shadow-outline'
+              >
                 <svg
                   className='w-6 fill-current'
                   id='icon-play2'
@@ -104,6 +121,7 @@ const MovieDetail = ({
           </div>
         </div>
       </div>
+      {modal && <Modal onClick={onClick} trailer={trailer} />}
     </>
   );
 };

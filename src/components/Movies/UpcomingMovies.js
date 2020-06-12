@@ -51,22 +51,38 @@ const UpcomingMovies = () => {
           })}
         </div>
       </div>
-      <div className='container mx-auto px-4 flex flex-col md:flex-row items-center justify-between'>
+      <div className='container flex items-center justify-center'>
         {currentPage > 1 && (
           <button
             onClick={prevButton}
-            class='bg-gray-800 my-6 bg-orange-500 text-gray-900 rounded font-semibold p-2 hover:bg-orange-600 transition ease-in-out duration-150 focus:outline-none focus:shadow-outline'
+            class='flex y-6 bg-orange-500 text-gray-900 rounded font-semibold p-2 hover:bg-orange-600 transition ease-in-out duration-150 focus:outline-none focus:shadow-outline'
           >
-            Page {currentPage - 1}
+            <svg
+              className='w-6 fill-current'
+              id='icon-arrow-left2'
+              viewBox='0 0 32 32'
+            >
+              <path d='M12.586 27.414l-10-10c-0.781-0.781-0.781-2.047 0-2.828l10-10c0.781-0.781 2.047-0.781 2.828 0s0.781 2.047 0 2.828l-6.586 6.586h19.172c1.105 0 2 0.895 2 2s-0.895 2-2 2h-19.172l6.586 6.586c0.39 0.39 0.586 0.902 0.586 1.414s-0.195 1.024-0.586 1.414c-0.781 0.781-2.047 0.781-2.828 0z'></path>
+            </svg>
+            <span className='ml-2'>Page {currentPage - 1}</span>
           </button>
         )}
         {currentPage !== totalPages && (
-          <button
-            onClick={nextButton}
-            class='bg-gray-800 my-6 bg-orange-500 text-gray-900 rounded font-semibold p-2 hover:bg-orange-600 transition ease-in-out duration-150 focus:outline-none focus:shadow-outline'
-          >
-            Page {currentPage + 1}
-          </button>
+          <div className='items-center ml-auto'>
+            <button
+              onClick={nextButton}
+              class='flex my-6 bg-orange-500 text-gray-900 rounded font-semibold p-2 hover:bg-orange-600 transition ease-in-out duration-150 focus:outline-none focus:shadow-outline'
+            >
+              <span> Page {currentPage + 1}</span>
+              <svg
+                className='ml-2 w-6 fill-current'
+                id='icon-arrow-right2'
+                viewBox='0 0 32 32'
+              >
+                <path d='M19.414 27.414l10-10c0.781-0.781 0.781-2.047 0-2.828l-10-10c-0.781-0.781-2.047-0.781-2.828 0s-0.781 2.047 0 2.828l6.586 6.586h-19.172c-1.105 0-2 0.895-2 2s0.895 2 2 2h19.172l-6.586 6.586c-0.39 0.39-0.586 0.902-0.586 1.414s0.195 1.024 0.586 1.414c0.781 0.781 2.047 0.781 2.828 0z'></path>
+              </svg>
+            </button>
+          </div>
         )}
       </div>
     </div>
