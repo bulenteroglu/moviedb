@@ -110,14 +110,18 @@ const MovieDetail = ({
                             <div className={`${i < 1} ml-8`}>
                               {credit.character}
                               <div className='text-sm text-gray-400'>
-                                {credit.name}
+                                <Link to={`/actor/${credit.id}`}>
+                                  {credit.name}
+                                </Link>
                               </div>
                             </div>
                           ) : (
                             <div>
                               {credit.character}
                               <div className='text-sm text-gray-400'>
-                                {credit.name}
+                                <Link to={`/actor/${credit.id}`}>
+                                  {credit.name}
+                                </Link>
                               </div>
                             </div>
                           );

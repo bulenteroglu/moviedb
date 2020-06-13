@@ -42,7 +42,6 @@ export function MovieCard({ movie }) {
               <Moment format='MMM D, YYYY'>{movie.release_date}</Moment>
             </span>
           </div>
-          <div className='text-gray-400 text-sm'>Action, Thriller, Comedy</div>
         </div>
       </Link>
     </div>

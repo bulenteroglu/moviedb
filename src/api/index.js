@@ -85,3 +85,17 @@ export const getPerson = async (id) => {
     console.log(error);
   }
 };
+
+export const getPersonMovies = async (id, currentPage, option) => {
+  console.log(option);
+
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&sort_by=${option}&page=${currentPage}&with_cast=${id}`
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
