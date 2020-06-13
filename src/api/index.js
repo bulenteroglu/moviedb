@@ -61,3 +61,27 @@ export const getCast = async (id) => {
     console.log(error);
   }
 };
+
+export const getNowPlaying = async (currentPage) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${currentPage}`
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getPerson = async (id) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_API_KEY}`
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

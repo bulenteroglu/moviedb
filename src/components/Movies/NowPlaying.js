@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MovieCard } from "../index";
-import { getTopRated } from "../../api";
+import { getNowPlaying } from "../../api";
 import ReactLoading from "react-loading";
 
 import DocumentTitle from "react-document-title";
@@ -13,7 +13,7 @@ const UpcomingMovies = () => {
 
   useEffect(() => {
     const fetchAPI = async () => {
-      setMovies(await getTopRated(currentPage));
+      setMovies(await getNowPlaying(currentPage));
     };
 
     fetchAPI();
@@ -25,7 +25,7 @@ const UpcomingMovies = () => {
 
   useEffect(() => {
     const fetchAPI = async () => {
-      setMovies(await getTopRated(currentPage));
+      setMovies(await getNowPlaying(currentPage));
       setTimeout(() => {
         setLoaded(true);
       }, 100);

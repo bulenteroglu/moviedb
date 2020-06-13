@@ -38,6 +38,11 @@ export function Navbar() {
               Top Rated
             </li>
           </Link>
+          <Link to='/discover/now-playing'>
+            <li className='md:ml-6 mt-3 md:mt-0 hover:text-gray-300'>
+              Now Playing
+            </li>
+          </Link>
         </ul>
         <div className='flex items-center'>
           <div className='relative mt-3 md:mt-0'>
