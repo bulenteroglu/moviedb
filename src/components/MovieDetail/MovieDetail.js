@@ -39,6 +39,7 @@ const MovieDetail = ({
   }, []);
 
   useEffect(() => {
+    setLoaded(false);
     const fetchAPI = async () => {
       window.scrollTo(0, 0);
       setData(await getMovie(id));

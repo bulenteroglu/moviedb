@@ -87,27 +87,27 @@ export function Navbar({ handleChange }) {
           aria-orientation='vertical'
           aria-labelledby='options-menu'
         >
-          <Link to='/discover/tv/airing-today'>
-            <button
-              onClick={(e) => setShowOptions(false)}
-              className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
-            >
+          <Link
+            to='/discover/tv/airing-today'
+            onClick={(e) => setShowOptionsShow(false)}
+          >
+            <button className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '>
               Airing Today
             </button>
           </Link>
-          <Link to='/discover/tv/popular'>
-            <button
-              onClick={(e) => setShowOptions(false)}
-              className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
-            >
+          <Link
+            to='/discover/tv/popular'
+            onClick={(e) => setShowOptionsShow(false)}
+          >
+            <button className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '>
               Popular
             </button>
           </Link>
-          <Link to='/discover/tv/top-rated'>
-            <button
-              onClick={(e) => setShowOptions(false)}
-              className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
-            >
+          <Link
+            to='/discover/tv/top-rated'
+            onClick={(e) => setShowOptionsShow(false)}
+          >
+            <button className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '>
               Top Rated
             </button>
           </Link>
@@ -240,7 +240,9 @@ export function Navbar({ handleChange }) {
                                   alt='poster'
                                   className='w-8'
                                 />
-                                <span className='ml-4'>{movie.title}</span>
+                                <span className='ml-4'>
+                                  {movie.original_title}
+                                </span>
                               </Link>
                             </div>
                           </li>
