@@ -7,9 +7,11 @@ export function Navbar() {
 
   const onClickMovies = () => {
     setShowOptions(!showOptions);
+    setShowOptionsShow(false);
   };
 
-  const onClickShow = () => {
+  const onClickShow = (e) => {
+    setShowOptions(false);
     setShowOptionsShow(!showOptionsShow);
   };
 
@@ -27,7 +29,7 @@ export function Navbar() {
         >
           <Link to='/discover/upcoming'>
             <button
-              onClick={(e) => setShowOptionsShow(false)}
+              onClick={(e) => onClickMovies(false)}
               className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
             >
               Upcoming Movies
@@ -35,7 +37,7 @@ export function Navbar() {
           </Link>
           <Link to='/discover/top-rated'>
             <button
-              onClick={(e) => setShowOptionsShow(false)}
+              onClick={(e) => onClickMovies(false)}
               className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
             >
               Top Rated
@@ -43,7 +45,7 @@ export function Navbar() {
           </Link>
           <Link to='/discover/now-playing'>
             <button
-              onClick={(e) => setShowOptionsShow(false)}
+              onClick={(e) => onClickMovies(false)}
               className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
             >
               Now Playing
@@ -66,28 +68,28 @@ export function Navbar() {
           aria-orientation='vertical'
           aria-labelledby='options-menu'
         >
-          <Link to='/discover/upcoming'>
+          <Link to='/discover/tv/airing-today'>
             <button
               onClick={(e) => setShowOptions(false)}
               className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
             >
-              Upcoming Movies
+              Airing Today
             </button>
           </Link>
-          <Link to='/discover/top-rated'>
+          <Link to='/discover/tv/popular'>
+            <button
+              onClick={(e) => setShowOptions(false)}
+              className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
+            >
+              Popular
+            </button>
+          </Link>
+          <Link to='/discover/tv/top-rated'>
             <button
               onClick={(e) => setShowOptions(false)}
               className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
             >
               Top Rated
-            </button>
-          </Link>
-          <Link to='/discover/now-playing'>
-            <button
-              onClick={(e) => setShowOptions(false)}
-              className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
-            >
-              Now Playing
             </button>
           </Link>
         </div>
@@ -152,7 +154,7 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* <div className='ml-5 relative inline-block text-left'>
+          <div className='ml-5 relative inline-block text-left'>
             <div>
               <span className='md:ml-8 mt-3 md:mt-0 hover:text-gray-300 rounded-md shadow-sm text-gray-500'>
                 <button
@@ -175,7 +177,7 @@ export function Navbar() {
               </span>
               {showOptionsShow && <TVShowOption />}
             </div>
-          </div> */}
+          </div>
 
           {/* <Link to='/discover/top-rated'>
             <li className='md:ml-6 mt-3 md:mt-0 hover:text-gray-300'>

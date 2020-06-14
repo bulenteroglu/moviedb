@@ -87,11 +87,69 @@ export const getPerson = async (id) => {
 };
 
 export const getPersonMovies = async (id, currentPage, option) => {
-  console.log(option);
-
   try {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&sort_by=${option}&page=${currentPage}&with_cast=${id}`
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getShow = async (id) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAiringToday = async (currentPage) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/tv/airing_today?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${currentPage}`
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getShowCast = async (id) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getShowPopular = async (currentPage) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${currentPage}`
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getShowTopRated = async (currentPage) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${currentPage}`
     );
 
     return data;

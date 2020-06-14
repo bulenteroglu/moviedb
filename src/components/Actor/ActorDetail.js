@@ -116,7 +116,7 @@ const ActorDetail = ({
 
   const Sortby = () => (
     <div className='origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg'>
-      <div className='rounded-md bg-white shadow-xs'>
+      <div className='rounded-md bg-gray-800 shadow-xs'>
         <div
           className='py-1'
           role='menu'
@@ -125,7 +125,7 @@ const ActorDetail = ({
         >
           <button
             onClick={(e) => clickOptions(e.target.value)}
-            className='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900'
+            className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
             role='menuitem'
             value='Popularity'
           >
@@ -133,7 +133,7 @@ const ActorDetail = ({
           </button>
           <button
             onClick={(e) => clickOptions(e.target.value)}
-            className='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900'
+            className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
             role='menuitem'
             value='Votes'
           >
@@ -141,7 +141,7 @@ const ActorDetail = ({
           </button>
           <button
             onClick={(e) => clickOptions(e.target.value)}
-            className='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900'
+            className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
             role='menuitem'
             value='Title'
           >
@@ -149,7 +149,7 @@ const ActorDetail = ({
           </button>
           <button
             onClick={(e) => clickOptions(e.target.value)}
-            className='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900'
+            className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
             role='menuitem'
             value='Release'
           >
@@ -261,11 +261,11 @@ const ActorDetail = ({
                 <div className='mt-2'>
                   <div className='relative inline-block text-left'>
                     <div>
-                      <span className='rounded-md shadow-sm'>
+                      <span className='rounded-md shadow-sm text-gray-500'>
                         <button
                           onClick={onClickSort}
                           type='button'
-                          className='inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150'
+                          className='inline-flex justify-center w-full rounded-md px-4 py-2 bg-gray-800 text-sm leading-5 font-medium  hover:text-white focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150'
                           id='options-menu'
                           aria-haspopup='true'
                           aria-expanded='true'
