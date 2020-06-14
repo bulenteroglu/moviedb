@@ -52,13 +52,11 @@ const AiringToday = () => {
     window.scrollTo(0, 0);
   };
 
-  console.log(movies);
-
   if (!movies.results) return null;
 
   return (
     <>
-      <DocumentTitle title='Upcoming Movies' />
+      <DocumentTitle title='Airing Today' />
       {!loaded ? (
         <div className='flex justify-center items-center h-screen'>
           <ReactLoading

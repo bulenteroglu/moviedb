@@ -38,10 +38,6 @@ const TVDetail = ({
     fetchAPI();
   }, []);
 
-  console.log(data);
-
-  console.log(credits);
-
   return (
     <>
       <DocumentTitle

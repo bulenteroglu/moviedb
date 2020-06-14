@@ -38,7 +38,22 @@ const MovieDetail = ({
     fetchAPI();
   }, []);
 
-  console.log(credits);
+  useEffect(() => {
+    const fetchAPI = async () => {
+      window.scrollTo(0, 0);
+      setData(await getMovie(id));
+      setTrailer(await getTrailer(id));
+      setCredits(await getCast(id));
+      setTimeout(() => {
+        setLoaded(true);
+      }, 300);
+    };
+    fetchAPI();
+  }, [id]);
+
+  console.log(id);
+
+  console.log(data);
 
   return (
     <>

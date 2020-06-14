@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 export function TVCard({ movie }) {
   if (!movie) return null;
 
-  console.log(movie);
-
   return (
     <div class='mt-8'>
       <Link to={`/tv/${movie.id}`}>

@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { searchMovie } from "../../api";
+import NotFound from "../../Utils/img/no-image-found.png";
 
-export function Navbar() {
+export function Navbar({ handleChange }) {
   const [showOptions, setShowOptions] = useState(false);
   const [showOptionsShow, setShowOptionsShow] = useState(false);
+  const [data, setData] = useState([]);
+  const [query, setQuery] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const onClickMovies = () => {
     setShowOptions(!showOptions);
@@ -14,6 +19,20 @@ export function Navbar() {
     setShowOptions(false);
     setShowOptionsShow(!showOptionsShow);
   };
+
+  const search = (e) => {
+    setQuery(e.target.value);
+    if (query.length > 1) {
+      setSearchOpen(true);
+      const fetchAPI = async () => {
+        setData(await searchMovie(query));
+      };
+
+      fetchAPI();
+    }
+  };
+
+  console.log(data);
 
   const MoviesOption = () => (
     <div
@@ -59,7 +78,7 @@ export function Navbar() {
   const TVShowOption = () => (
     <div
       className='origin-top-right absolute items-center mt-2  rounded-md shadow-lg'
-      style={{ left: "17.5px", width: "10rem" }}
+      style={{ left: "27.5px", width: "10rem" }}
     >
       <div className='rounded-md bg-gray-800 shadow-xs'>
         <div
@@ -178,17 +197,6 @@ export function Navbar() {
               {showOptionsShow && <TVShowOption />}
             </div>
           </div>
-
-          {/* <Link to='/discover/top-rated'>
-            <li className='md:ml-6 mt-3 md:mt-0 hover:text-gray-300'>
-              Top Rated
-            </li>
-          </Link>
-          <Link to='/discover/now-playing'>
-            <li className='md:ml-6 mt-3 md:mt-0 hover:text-gray-300'>
-              Now Playing
-            </li>
-          </Link> */}
         </ul>
         <div className='flex items-center'>
           <div className='relative mt-3 md:mt-0'>
@@ -196,6 +204,7 @@ export function Navbar() {
               type='text'
               className='bg-gray-800 text-sm rounded-full w-64 px-4 pl-8 py-1 focus:outline-none focus:shadow-outline'
               placeholder='Search'
+              onChange={search}
             />
             <div className='absolute top-0'>
               <svg
@@ -205,6 +214,42 @@ export function Navbar() {
                 <path d='M31.008 27.231l-7.58-6.447c-0.784-0.705-1.622-1.029-2.299-0.998 1.789-2.096 2.87-4.815 2.87-7.787 0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12c2.972 0 5.691-1.081 7.787-2.87-0.031 0.677 0.293 1.515 0.998 2.299l6.447 7.58c1.104 1.226 2.907 1.33 4.007 0.23s0.997-2.903-0.23-4.007zM12 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z'></path>
               </svg>
             </div>
+
+            {searchOpen && (
+              <div>
+                {!query.length < 1 && query.length > 2 && (
+                  <div className='absolute bg-gray-800 text-sm rounded w-64 mt-4'>
+                    <ul>
+                      {data.results &&
+                        data.results.slice(0, 15).map((movie) => (
+                          <li className='border-b border-gray-700'>
+                            <div
+                              className='block hover:bg-gray-700 px-3 py-3'
+                              onClick={(e) => setSearchOpen(false)}
+                            >
+                              <Link
+                                to={`/movie/${movie.id}`}
+                                className='block hover:bg-gray-700 px-3 py-3 flex items-center'
+                              >
+                                <img
+                                  src={
+                                    !movie.poster_path
+                                      ? NotFound
+                                      : `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                                  }
+                                  alt='poster'
+                                  className='w-8'
+                                />
+                                <span className='ml-4'>{movie.title}</span>
+                              </Link>
+                            </div>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

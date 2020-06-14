@@ -157,3 +157,15 @@ export const getShowTopRated = async (currentPage) => {
     console.log(error);
   }
 };
+
+export const searchMovie = async (searchInput) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchInput}`
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
