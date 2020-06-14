@@ -1,7 +1,100 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export function Navbar() {
+  const [showOptions, setShowOptions] = useState(false);
+  const [showOptionsShow, setShowOptionsShow] = useState(false);
+
+  const onClickMovies = () => {
+    setShowOptions(!showOptions);
+  };
+
+  const onClickShow = () => {
+    setShowOptionsShow(!showOptionsShow);
+  };
+
+  const MoviesOption = () => (
+    <div
+      className='origin-top-right absolute items-center mt-2  rounded-md shadow-lg'
+      style={{ left: "17.5px", width: "10rem" }}
+    >
+      <div className='rounded-md bg-gray-800 shadow-xs'>
+        <div
+          className='py-1 '
+          role='menu'
+          aria-orientation='vertical'
+          aria-labelledby='options-menu'
+        >
+          <Link to='/discover/upcoming'>
+            <button
+              onClick={(e) => setShowOptionsShow(false)}
+              className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
+            >
+              Upcoming Movies
+            </button>
+          </Link>
+          <Link to='/discover/top-rated'>
+            <button
+              onClick={(e) => setShowOptionsShow(false)}
+              className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
+            >
+              Top Rated
+            </button>
+          </Link>
+          <Link to='/discover/now-playing'>
+            <button
+              onClick={(e) => setShowOptionsShow(false)}
+              className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
+            >
+              Now Playing
+            </button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+
+  const TVShowOption = () => (
+    <div
+      className='origin-top-right absolute items-center mt-2  rounded-md shadow-lg'
+      style={{ left: "17.5px", width: "10rem" }}
+    >
+      <div className='rounded-md bg-gray-800 shadow-xs'>
+        <div
+          className='py-1 '
+          role='menu'
+          aria-orientation='vertical'
+          aria-labelledby='options-menu'
+        >
+          <Link to='/discover/upcoming'>
+            <button
+              onClick={(e) => setShowOptions(false)}
+              className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
+            >
+              Upcoming Movies
+            </button>
+          </Link>
+          <Link to='/discover/top-rated'>
+            <button
+              onClick={(e) => setShowOptions(false)}
+              className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
+            >
+              Top Rated
+            </button>
+          </Link>
+          <Link to='/discover/now-playing'>
+            <button
+              onClick={(e) => setShowOptions(false)}
+              className='block px-4 py-2 text-sm leading-5 text-gray-500 hover:text-white focus:outline-none '
+            >
+              Now Playing
+            </button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <nav className='border-b border-gray-800'>
       <div className='container mx-auto px-4 flex flex-col md:flex-row items-center justify-between px-4 py-6'>
@@ -36,11 +129,11 @@ export function Navbar() {
 
           <div className='relative inline-block text-left'>
             <div>
-              <span className='md:ml-8 mt-3 md:mt-0 hover:text-gray-300 rounded-md shadow-sm'>
+              <span className='md:ml-8 mt-3 md:mt-0 hover:text-gray-300 rounded-md shadow-sm text-gray-500'>
                 <button
-                  // onClick={onClickSort}
+                  onClick={onClickMovies}
                   type='button'
-                  className='inline-flex justify-center w-full rounded-md  px-4 py-2 bg-gray-800 text-sm leading-5 font-medium  hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150'
+                  className='inline-flex justify-center w-full rounded-md px-4 py-2 bg-gray-800 text-sm leading-5 font-medium  hover:text-white focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150'
                   id='options-menu'
                   aria-haspopup='true'
                   aria-expanded='true'
@@ -55,17 +148,17 @@ export function Navbar() {
                   </svg>
                 </button>
               </span>
+              {showOptions && <MoviesOption />}
             </div>
-
-            {/* {showOptions && <Sortby />} */}
           </div>
-          <div className='relative inline-block text-left ml-4'>
+
+          {/* <div className='ml-5 relative inline-block text-left'>
             <div>
-              <span className='md:ml-8 mt-3 md:mt-0 hover:text-gray-300 rounded-md shadow-sm'>
+              <span className='md:ml-8 mt-3 md:mt-0 hover:text-gray-300 rounded-md shadow-sm text-gray-500'>
                 <button
-                  // onClick={onClickSort}
+                  onClick={onClickShow}
                   type='button'
-                  className='inline-flex justify-center w-full rounded-md  px-4 py-2 bg-gray-800 text-sm leading-5 font-medium  hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150'
+                  className='inline-flex justify-center w-full rounded-md px-4 py-2 bg-gray-800 text-sm leading-5 font-medium  hover:text-white focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150'
                   id='options-menu'
                   aria-haspopup='true'
                   aria-expanded='true'
@@ -80,10 +173,9 @@ export function Navbar() {
                   </svg>
                 </button>
               </span>
+              {showOptionsShow && <TVShowOption />}
             </div>
-
-            {/* {showOptions && <Sortby />} */}
-          </div>
+          </div> */}
 
           {/* <Link to='/discover/top-rated'>
             <li className='md:ml-6 mt-3 md:mt-0 hover:text-gray-300'>
