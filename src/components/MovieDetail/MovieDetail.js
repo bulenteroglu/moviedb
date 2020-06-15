@@ -6,7 +6,12 @@ import moment from "moment";
 import DocumentTitle from "react-document-title";
 import { Link } from "react-router-dom";
 
-import { getMovie, getTrailer, getCast } from "../../api/";
+import {
+  getMovie,
+  getTrailer,
+  getCast,
+  getRecommendedMovies,
+} from "../../api/";
 import Modal from "./Modal";
 
 const MovieDetail = ({
@@ -19,6 +24,7 @@ const MovieDetail = ({
   const [credits, setCredits] = useState([]);
   const [modal, setModal] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [recommended, setRecommended] = useState([]);
 
   const onClick = () => {
     setModal(!modal);
@@ -30,6 +36,7 @@ const MovieDetail = ({
       setData(await getMovie(id));
       setTrailer(await getTrailer(id));
       setCredits(await getCast(id));
+      setRecommended(await getRecommendedMovies(id));
       setTimeout(() => {
         setLoaded(true);
       }, 300);
@@ -45,6 +52,8 @@ const MovieDetail = ({
       setData(await getMovie(id));
       setTrailer(await getTrailer(id));
       setCredits(await getCast(id));
+      setRecommended(await getRecommendedMovies(id));
+
       setTimeout(() => {
         setLoaded(true);
       }, 300);
@@ -52,9 +61,7 @@ const MovieDetail = ({
     fetchAPI();
   }, [id]);
 
-  console.log(id);
-
-  console.log(data);
+  console.log(recommended);
 
   return (
     <>
@@ -75,7 +82,7 @@ const MovieDetail = ({
         </div>
       ) : (
         <>
-          <div className='movie-info border-b border-gray-800 '>
+          <div className='movie-info border-b border-gray-800'>
             <div className='container mx-auto px-4 py-16 flex flex-col md:flex-row'>
               <img
                 style={{ width: "24rem" }}
@@ -88,7 +95,7 @@ const MovieDetail = ({
               />
               <div className='md:ml-24'>
                 <h2 className='text-4xl font-semibold'>
-                  {data.original_title} (
+                  {data.title} (
                   <Moment format='YYYY'>{data.release_date}</Moment>)
                 </h2>
                 <div className='flex flex-wrap items-center text-gray-400 text-sm'>
@@ -115,7 +122,6 @@ const MovieDetail = ({
                     })}
                 </div>
                 <p className='text-gray-300 mt-8'>{data.overview}</p>
-
                 <div className='mt-12'>
                   <h4 className='text-white font-semibold'>Featured Cast</h4>
                   <div className='flex mt-4'>
@@ -204,6 +210,36 @@ const MovieDetail = ({
               </div>
             </div>
           </div>
+
+          {recommended.results && (
+            <div className='movie-recommend border-t border-gray-800'>
+              <div className='container mx-auto px-4 py-16'>
+                <h2 className='text-4xl font-semibold'>Recommended Movies</h2>
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8'>
+                  {recommended.results &&
+                    recommended.results.map((movie) => (
+                      <Link to={`/movie/${movie.id}`}>
+                        <div className='mt-8'>
+                          <img
+                            alt='Placeholder'
+                            className='hover:opacity-75 transition ease-in-out duration-150'
+                            src={
+                              !movie.poster_path
+                                ? NotFound
+                                : `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`
+                            }
+                            alt={movie.title}
+                          />
+                          <div className='mt-2'>
+                            <div className='text-gray-400'>{movie.title}</div>
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                </div>
+              </div>
+            </div>
+          )}
           {/* end movie-info */}
         </>
       )}

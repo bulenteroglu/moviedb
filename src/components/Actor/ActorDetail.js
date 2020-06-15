@@ -191,12 +191,15 @@ const ActorDetail = ({
               <div className='md:ml-24'>
                 <h2 className='text-4xl font-semibold'>{data.name}</h2>
 
+                {!data.biography && (
+                  <p className='mt-2'>There is no biography available...</p>
+                )}
                 {data.biography.length < 700 ? (
                   <p className='text-gray-300 mt-8'>{data.biography}</p>
                 ) : (
                   <div>
                     <p className='text-gray-300 mt-8'>
-                      {data.biography.substring(0, 900) + "....."}
+                      {data.biography.substring(0, 701) + "....."}
                     </p>
                     <div className='mt-2'>
                       <button
@@ -209,30 +212,31 @@ const ActorDetail = ({
                   </div>
                 )}
 
-                <div className='flex flex-wrap mt-8 items-center '>
-                  <span className='font-semibold'>Born: </span>
-
-                  <span className='ml-2'>
-                    <Moment format='D MMMM YYYY'>{data.birthday}</Moment>
-                    {!data.deathday && (
-                      <span className='ml-2 text-sm italic'>
-                        (
-                        <Moment fromNow ago>
-                          {data.birthday}
-                        </Moment>{" "}
-                        old),
-                      </span>
-                    )}
-                  </span>
-                  <a
-                    href={`https://www.google.com/search?q=${data.place_of_birth}`}
-                    target='_blank'
-                    className='ml-2 text-blue-600 cursor-pointer underline'
-                  >
-                    {" "}
-                    {data.place_of_birth}
-                  </a>
-                </div>
+                {data.birthday && (
+                  <div className='flex flex-wrap mt-8 items-center'>
+                    <span className='font-semibold'>Born: </span>
+                    <span className='ml-2'>
+                      <Moment format='D MMMM YYYY'>{data.birthday}</Moment>
+                      {!data.deathday && (
+                        <span className='ml-2 text-sm italic'>
+                          (
+                          <Moment fromNow ago>
+                            {data.birthday}
+                          </Moment>{" "}
+                          old),
+                        </span>
+                      )}
+                    </span>
+                    <a
+                      href={`https://www.google.com/search?q=${data.place_of_birth}`}
+                      target='_blank'
+                      className='ml-2 text-blue-600 cursor-pointer underline'
+                    >
+                      {" "}
+                      {data.place_of_birth}
+                    </a>
+                  </div>
+                )}
 
                 {data.deathday && (
                   <div className='flex flex-wrap mt-2 items-center '>

@@ -21,9 +21,7 @@ export function MovieCard({ movie }) {
           }
         />
         <div className='mt-2'>
-          <div href='' className='text-lg mt-2 hover:text-gray:300'>
-            {movie.title}
-          </div>
+          <div className='text-lg mt-2 hover:text-gray:300'>{movie.title}</div>
 
           <div className='flex items-center text-gray-400 text-sm mt-1'>
             <span>

@@ -10,13 +10,13 @@ import AiringToday from "./components/TV/AiringToday";
 import PopularTV from "./components/TV/PopularShows";
 import TopRatedShows from "./components/TV/TopRated";
 import TVDetail from "./components/TV/TVDetail";
+import Footer from "./components/Layout/Footer";
 
 const App = () => {
   return (
     <BrowserRouter>
       <div className='font-sans bg-gray-900 text-white'>
         <Navbar />
-
         <Route path='/movie/:id' component={MovieDetail} />
         <Route path='/discover/Upcoming' component={UpcomigMovies} />
         <Route path='/discover/top-rated' component={TopMovies} />
@@ -26,6 +26,7 @@ const App = () => {
         <Route path='/discover/tv/top-rated' component={TopRatedShows} />
         <Route path='/tv/:id' component={TVDetail} />
         <Route path='/actor/:id' component={ActorDetail} />
+        <Footer />
       </div>
     </BrowserRouter>
   );

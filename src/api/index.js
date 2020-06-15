@@ -169,3 +169,15 @@ export const searchMovie = async (searchInput) => {
     console.log(error);
   }
 };
+
+export const getRecommendedMovies = async (id) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_API_KEY}`
+    );
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

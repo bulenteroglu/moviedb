@@ -13,11 +13,13 @@ export function Navbar({ handleChange }) {
   const onClickMovies = () => {
     setShowOptions(!showOptions);
     setShowOptionsShow(false);
+    setSearchOpen(false);
   };
 
   const onClickShow = (e) => {
     setShowOptions(false);
     setShowOptionsShow(!showOptionsShow);
+    setSearchOpen(false);
   };
 
   const search = (e) => {
@@ -148,12 +150,6 @@ export function Navbar({ handleChange }) {
             </svg>
           </Link>
 
-          {/* <Link to='/discover/upcoming'>
-            <button className='md:ml-16 mt-3 md:mt-0 hover:text-gray-300'>
-              Upcoming Movies
-            </button>
-          </Link> */}
-
           <div className='relative inline-block text-left'>
             <div>
               <span className='md:ml-8 mt-3 md:mt-0 hover:text-gray-300 rounded-md shadow-sm text-gray-500'>
@@ -248,9 +244,7 @@ export function Navbar({ handleChange }) {
                                   alt='poster'
                                   className='w-8'
                                 />
-                                <span className='ml-4'>
-                                  {movie.original_title}
-                                </span>
+                                <span className='ml-4'>{movie.title}</span>
                               </Link>
                             </div>
                           </li>
