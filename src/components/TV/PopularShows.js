@@ -28,7 +28,7 @@ const AiringToday = () => {
       setMovies(await getShowPopular(currentPage));
       setTimeout(() => {
         setLoaded(true);
-      }, 100);
+      }, 500);
     };
 
     fetchAPI();

@@ -16,6 +16,7 @@ const App = () => {
     <BrowserRouter>
       <div className='font-sans bg-gray-900 text-white'>
         <Navbar />
+
         <Route path='/movie/:id' component={MovieDetail} />
         <Route path='/discover/Upcoming' component={UpcomigMovies} />
         <Route path='/discover/top-rated' component={TopMovies} />

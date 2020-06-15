@@ -28,7 +28,7 @@ const TopRated = () => {
       setMovies(await getShowTopRated(currentPage));
       setTimeout(() => {
         setLoaded(true);
-      }, 100);
+      }, 500);
     };
 
     fetchAPI();
