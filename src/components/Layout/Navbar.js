@@ -205,6 +205,7 @@ export function Navbar({ handleChange }) {
               className='bg-gray-800 text-sm rounded-full w-64 px-4 pl-8 py-1 focus:outline-none focus:shadow-outline'
               placeholder='Search'
               onChange={search}
+              value={query}
             />
             <div className='absolute top-0'>
               <svg
@@ -228,6 +229,7 @@ export function Navbar({ handleChange }) {
                               onClick={(e) => setSearchOpen(false)}
                             >
                               <Link
+                                onClick={(e) => setQuery("")}
                                 to={`/movie/${movie.id}`}
                                 className='block hover:bg-gray-700 px-3 py-3 flex items-center'
                               >
