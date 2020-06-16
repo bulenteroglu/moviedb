@@ -11,7 +11,7 @@ export function TVCard({ movie }) {
       <Link to={`/tv/${movie.id}`}>
         <img
           alt='Placeholder'
-          className='hover:opacity-75 transition ease-in-out duration-150'
+          className='transition-opacity duration-1000 ease-out opacity-75 hover:opacity-100'
           src={
             !movie.poster_path
               ? NotFound

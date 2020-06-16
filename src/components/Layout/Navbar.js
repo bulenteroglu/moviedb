@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { searchMovie } from "../../api";
 import NotFound from "../../Utils/img/no-image-found.png";
+import "./Navbar.css";
 
 export function Navbar({ handleChange }) {
   const [showOptions, setShowOptions] = useState(false);
@@ -153,7 +154,7 @@ export function Navbar({ handleChange }) {
             </svg>
           </Link>
 
-          <div className='relative inline-block text-left'>
+          <div className='relative inline-block text-left movies-navbar '>
             <div>
               <span className='md:ml-8 mt-3 md:mt-0 hover:text-gray-300 rounded-md shadow-sm text-gray-500'>
                 <button
@@ -166,7 +167,7 @@ export function Navbar({ handleChange }) {
                 >
                   Movies
                   <svg
-                    className='-mr-1 ml-2 h-5 w-5'
+                    className='ml-2 h-5 w-5'
                     viewBox='0 0 20 20'
                     fill='currentColor'
                   >
@@ -178,7 +179,7 @@ export function Navbar({ handleChange }) {
             </div>
           </div>
 
-          <div className='ml-5 relative inline-block text-left'>
+          <div className='ml-5 relative inline-block text-left movies-navbar'>
             <div>
               <span className='md:ml-8 mt-3 md:mt-0 hover:text-gray-300 rounded-md shadow-sm text-gray-500'>
                 <button

@@ -41,7 +41,7 @@ export const getTrailer = async (id) => {
     const {
       data: { results },
     } = await axios.get(
-      `http://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`
+      `https://cors-anywhere.herokuapp.com/https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`
     );
 
     return results;

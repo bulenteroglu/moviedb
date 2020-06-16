@@ -1,0 +1,11 @@
+.movies-navbar:hover svg {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease 0s;
+    
+}
+
+.movies-navbar:not(:hover) svg {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease 0s;
+    
+}
