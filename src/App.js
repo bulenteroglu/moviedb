@@ -11,12 +11,14 @@ import PopularTV from "./components/TV/PopularShows";
 import TopRatedShows from "./components/TV/TopRated";
 import TVDetail from "./components/TV/TVDetail";
 import Footer from "./components/Layout/Footer";
+import Homepage from "./components/Homepage/Homepage";
 
 const App = () => {
   return (
     <BrowserRouter>
       <div className='font-sans bg-gray-900 text-white'>
         <Navbar />
+        <Route exact path='/' component={Homepage} />
         <Route path='/movie/:id' component={MovieDetail} />
         <Route path='/discover/Upcoming' component={UpcomigMovies} />
         <Route path='/discover/top-rated' component={TopMovies} />

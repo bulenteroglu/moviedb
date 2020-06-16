@@ -160,8 +160,6 @@ const ActorDetail = ({
     </div>
   );
 
-  //   console.log(data.biography.length);
-
   return (
     <>
       <DocumentTitle title={data.name} />

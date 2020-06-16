@@ -181,3 +181,31 @@ export const getRecommendedMovies = async (id) => {
     console.log(error);
   }
 };
+
+export const getTrendingMoviesToday = async () => {
+  try {
+    const {
+      data: { results },
+    } = await axios.get(
+      `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}`
+    );
+
+    return results;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getTrendingTvToday = async () => {
+  try {
+    const {
+      data: { results },
+    } = await axios.get(
+      `https://api.themoviedb.org/3/trending/tv/day?api_key=${process.env.REACT_APP_API_KEY}`
+    );
+
+    return results;
+  } catch (error) {
+    console.log(error);
+  }
+};

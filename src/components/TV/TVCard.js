@@ -7,11 +7,11 @@ export function TVCard({ movie }) {
   if (!movie) return null;
 
   return (
-    <div class='mt-8'>
+    <div className='mt-8'>
       <Link to={`/tv/${movie.id}`}>
         <img
           alt='Placeholder'
-          class='hover:opacity-75 transition ease-in-out duration-150'
+          className='hover:opacity-75 transition ease-in-out duration-150'
           src={
             !movie.poster_path
               ? NotFound

@@ -105,7 +105,7 @@ const TVDetail = ({
                       credits.cast.slice(0, 2).map((credit, i) => {
                         {
                           return i > 0 ? (
-                            <div className={`${i < 1} ml-8`}>
+                            <div key={i} className={`${i < 1} ml-8`}>
                               {credit.character}
                               <div className='text-sm text-gray-400'>
                                 <Link to={`/actor/${credit.id}`}>
@@ -114,7 +114,7 @@ const TVDetail = ({
                               </div>
                             </div>
                           ) : (
-                            <div>
+                            <div key={i}>
                               {credit.character}
                               <div className='text-sm text-gray-400'>
                                 <Link to={`/actor/${credit.id}`}>
@@ -163,8 +163,8 @@ const TVDetail = ({
                 <h2 className='text-4xl font-semibold'>Cast</h2>
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8'>
                   {credits.cast &&
-                    credits.cast.map((credit) => (
-                      <Link to={`/actor/${credit.id}`}>
+                    credits.cast.map((credit, i) => (
+                      <Link key={i} to={`/actor/${credit.id}`}>
                         <div className='mt-8'>
                           <img
                             alt='Placeholder'

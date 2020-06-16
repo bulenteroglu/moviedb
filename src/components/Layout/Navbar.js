@@ -24,7 +24,6 @@ export function Navbar({ handleChange }) {
 
   const search = (e) => {
     setQuery(e.target.value);
-    console.log(e.target.value);
 
     if (query.length > 1) {
       setSearchOpen(true);
@@ -38,12 +37,15 @@ export function Navbar({ handleChange }) {
     }
   };
 
-  console.log(data);
+  const clickSearch = (e) => {
+    setShowOptionsShow(false);
+    setShowOptions(false);
+  };
 
   const MoviesOption = () => (
     <div
       className='origin-top-right absolute items-center mt-2  rounded-md shadow-lg'
-      style={{ left: "17.5px", width: "10rem" }}
+      style={{ left: "17.5px", width: "10rem", zIndex: "202" }}
     >
       <div className='rounded-md bg-gray-800 shadow-xs'>
         <div
@@ -84,7 +86,7 @@ export function Navbar({ handleChange }) {
   const TVShowOption = () => (
     <div
       className='origin-top-right absolute items-center mt-2  rounded-md shadow-lg'
-      style={{ left: "27.5px", width: "10rem" }}
+      style={{ left: "27.5px", width: "10rem", zIndex: "202" }}
     >
       <div className='rounded-md bg-gray-800 shadow-xs'>
         <div
@@ -188,7 +190,7 @@ export function Navbar({ handleChange }) {
                 >
                   TV Shows
                   <svg
-                    className='-mr-1 ml-2 h-5 w-5'
+                    className='mr-1 ml-2 h-5 w-5'
                     viewBox='0 0 20 20'
                     fill='currentColor'
                   >
@@ -208,6 +210,7 @@ export function Navbar({ handleChange }) {
               placeholder='Search'
               onChange={search}
               value={query}
+              onClick={(e) => clickSearch()}
             />
             <div className='absolute top-0'>
               <svg
@@ -221,11 +224,14 @@ export function Navbar({ handleChange }) {
             {searchOpen && (
               <div>
                 {!query.length < 1 && query.length > 2 && (
-                  <div className='absolute bg-gray-800 text-sm rounded w-64 mt-4'>
+                  <div
+                    className='absolute bg-gray-800 text-sm rounded w-64 mt-4'
+                    style={{ zIndex: "100" }}
+                  >
                     <ul>
                       {data.results &&
-                        data.results.slice(0, 15).map((movie) => (
-                          <li className='border-b border-gray-700'>
+                        data.results.slice(0, 15).map((movie, i) => (
+                          <li className='border-b border-gray-700' key={i}>
                             <div
                               className='block hover:bg-gray-700 px-3 py-3'
                               onClick={(e) => setSearchOpen(false)}

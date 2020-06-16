@@ -68,12 +68,12 @@ const AiringToday = () => {
           />
         </div>
       ) : (
-        <div class='container mx-auto px-4 pt-16'>
+        <div className='container mx-auto px-4 pt-16'>
           <div className='upcoming-movies'>
             <h2 className='uppercase tracking-wider text-orange-500 text-lg font-semibold'>
               Airing Today
             </h2>
-            <div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8'>
               {movies.results.map((movie, i) => {
                 return <TVCard key={i} movie={movie} />;
               })}
@@ -84,7 +84,7 @@ const AiringToday = () => {
               <div className='items-center mr-auto'>
                 <button
                   onClick={prevButton}
-                  class='flex y-6 bg-orange-500 text-gray-900 rounded font-semibold p-2 hover:bg-orange-600 transition ease-in-out duration-150 focus:outline-none focus:shadow-outline'
+                  className='flex y-6 bg-orange-500 text-gray-900 rounded font-semibold p-2 hover:bg-orange-600 transition ease-in-out duration-150 focus:outline-none focus:shadow-outline'
                 >
                   <svg
                     className='w-6 fill-current'
@@ -101,7 +101,7 @@ const AiringToday = () => {
               <div className='items-center ml-auto'>
                 <button
                   onClick={nextButton}
-                  class='flex my-6 bg-orange-500 text-gray-900 rounded font-semibold p-2 hover:bg-orange-600 transition ease-in-out duration-150 focus:outline-none focus:shadow-outline'
+                  className='flex my-6 bg-orange-500 text-gray-900 rounded font-semibold p-2 hover:bg-orange-600 transition ease-in-out duration-150 focus:outline-none focus:shadow-outline'
                 >
                   <span> Page {currentPage + 1}</span>
                   <svg
