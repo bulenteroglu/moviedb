@@ -127,34 +127,6 @@ const TVDetail = ({
                       })}
                   </div>
                 </div>
-
-                {/* <div className='mt-12'>
-                  <button
-                    disabled={!trailer.length}
-                    onClick={onClick}
-                    className={` ${
-                      !trailer.length
-                        ? "cursor-not-allowed bg-red-600"
-                        : "bg-orange-500 hover:bg-orange-600 transition ease-in-out duration-150"
-                    }
-                flex items-center text-gray-900 rounded font-semibold px-5 py-4  focus:outline-none focus:shadow-outline`}
-                  >
-                    <svg
-                      className='w-6 fill-current'
-                      id='icon-play2'
-                      viewBox='0 0 32 32'
-                    >
-                      {trailer.length ? (
-                        <path d='M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z'></path>
-                      ) : (
-                        <path d='M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM22 8c1.105 0 2 0.895 2 2s-0.895 2-2 2-2-0.895-2-2 0.895-2 2-2zM10 8c1.105 0 2 0.895 2 2s-0.895 2-2 2-2-0.895-2-2 0.895-2 2-2zM22.003 24.398c-1.224-2.036-3.454-3.398-6.003-3.398s-4.779 1.362-6.003 3.398l-2.573-1.544c1.749-2.908 4.935-4.855 8.576-4.855s6.827 1.946 8.576 4.855l-2.573 1.544z'></path>
-                      )}
-                    </svg>
-                    <span className='ml-2'>
-                      {trailer.length ? "Play Trailer" : "No Trailer "}
-                    </span>
-                  </button>
-                </div> */}
               </div>
             </div>
 

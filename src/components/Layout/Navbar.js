@@ -130,6 +130,7 @@ export function Navbar({ handleChange }) {
         <ul className='flex flex-col md:flex-row items-center'>
           <Link to='/'>
             <svg
+              onClick={clickSearch}
               className='w-32'
               viewBox='0 0 489.04 35.4'
               style={{ fill: "url(#linear-gradient)" }}
